@@ -3,6 +3,7 @@ import { request, response } from "express";
 import {prisma} from "../database/db.js"
 
 import { encrypt, compare } from "../helpers/bcrypt.helpers.js";
+import {tokenSign} from "../helpers/token.helpers.js"
 
 
 export const CreateUser = async (request, res) => {
@@ -31,21 +32,19 @@ export const LoginUser = async (request, response) => {
             }
         })
         
-        const checkpassword = await compare(password, login.password)
-
-       
-       if(!login){ 
+        if(!login){ 
             response.status(404).json({message:'No existe, No insista'})
         }
+        const checkpassword = await compare(password, login.password)
+
+        const tokensession = await tokenSign(login)
+
        if(checkpassword){
-            response.status(201).json({message:'si, funciono'})
-            console.log(login)
+            response.status(201).json({tokensession, message:'si, funciono'})
         }
         if(!checkpassword){
             response.status(400).json({message:'la contraseña no'})
         }
-        
-
     } catch (error) {
         console.log(error.getmessage)
         return response.status(500).json({message:'No, pailas'}) 

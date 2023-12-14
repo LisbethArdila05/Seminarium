@@ -10,7 +10,5 @@ routes
 .post('/', validaUser, CreateUser) //crear
 .post('/login', LUser, LoginUser) //inicia sesion
 
-
-
 export default routes;
 
