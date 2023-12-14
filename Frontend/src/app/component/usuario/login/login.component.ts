@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ServiceUserComponent } from 'src/app/service/service-user.component';
-import { modeluser } from '../model/interface.user';
 
-import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2'
 
@@ -28,7 +27,7 @@ export class LoginComponent  implements OnInit {
     return this.LoginUser.get('password') as FormControl
   }
 
-  constructor(private fb: FormBuilder, private serviceu: ServiceUserComponent, private navcontrol: NavController) {}
+  constructor(private fb: FormBuilder, private serviceu: ServiceUserComponent, private router: Router) {}
 
   ngOnInit() {}
 
@@ -40,7 +39,7 @@ export class LoginComponent  implements OnInit {
         text: "Registro exitoso",
         icon: "success"
       });
-      this.navcontrol.navigateRoot('PrincipalComponent')
+      this.router.navigate([''])
 
       console.log('exitoso')
     },
