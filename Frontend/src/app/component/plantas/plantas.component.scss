@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+*{
+    font-family: 'Raleway', sans-serif;
+}
+header{
+    height: 100%;
+    width: 100%;
+}
+header h1{
+    text-align: center;
+    font-weight: bold;
+}
+header .inicio{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    width: 100%;
+}
+.inicio a{
+    position: relative;
+    text-decoration: none;
+    color: #000;       
+    font-size: 1.5rem;
+}
+.inicio .buscar{
+    position: relative;
+}
+.buscar input{
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: #e6dddd;
+    border-radius: 20px;
+    color: #000;
+}
+.buscar ion-icon{
+    position: absolute;
+    color: #000;
+    font-size: 1.4rem;
+    top: 5px;
+    right: 8px;
+}
+.tabla table{
+    position: absolute;
+    width: 90%;
+    table-layout: fixed;
+    height: 30px;
+    top: 90px;
+    margin: 65px;
+    font-size: 1.2rem;
+}
+.tabla td{
+    font-size: 1rem;
+    text-align: center;
+}
+
+

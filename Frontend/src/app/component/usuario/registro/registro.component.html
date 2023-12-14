@@ -1,0 +1,34 @@
+<section class="register">
+    <article class="wrapper">
+        <article class="formsregister">
+            <h2>Registrar usuario</h2>
+            <form [formGroup]="formUsuario" (ngSubmit) = "crear()" >
+                <fieldset class="registrarUser">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" id="mail" formControlName="mail">
+                    <label>Email</label>
+                </fieldset>
+        
+                <fieldset class="registrarUser">
+                    <ion-icon name="person-outline"></ion-icon> 
+                    <input type="text" id="user"  formControlName="user">
+                    <label>Nombre de usuario</label>
+                </fieldset>
+
+                <fieldset class="registrarUser">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="text" id="password" formControlName="password">
+                    <label>Contraseña</label>
+                </fieldset>
+                <button type="submit">Crear cuenta</button>
+                <article class="login">
+                    <p>¿Ya tiene una cuenta? <a href="#">Iniciar sesion</a></p>
+                </article>
+            </form>
+        </article>
+    </article>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
+        <script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>
+</section>
+
