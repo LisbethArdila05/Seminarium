@@ -6,10 +6,6 @@ import { PrincipalComponent } from './principal/principal.component';
 
 const routes: Routes = [
   {
-    path: 'registro',
-    component: RegistroComponent
-  },
-  {
     path:'', 
     redirectTo: '/login',
     pathMatch: 'full'
@@ -17,7 +13,12 @@ const routes: Routes = [
   {
     path:'login', 
     component: LoginComponent, 
+  },
+  {
+    path: 'registro',
+    component: RegistroComponent
   }
+  
 ]; 
 
 @NgModule({

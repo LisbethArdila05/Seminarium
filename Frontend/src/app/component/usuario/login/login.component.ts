@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ServiceUserComponent } from 'src/app/service/service-user.component';
 
-import { Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+
+import { PrincipalComponent } from '../../principal/principal.component';
 
 import Swal from 'sweetalert2'
 
@@ -34,13 +36,8 @@ export class LoginComponent  implements OnInit {
   LoginU(){
     const data = this.LoginUser.value as FormGroup
     this.serviceu.login(data).subscribe((res:any) => {
-      Swal.fire({
-        title: "Registro de usuario",
-        text: "Registro exitoso",
-        icon: "success"
-      });
-      this.router.navigate([''])
 
+      this.router.navigateByUrl('/PrincipalComponent');
       console.log('exitoso')
     },
     (error: any) =>{

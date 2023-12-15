@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { UsuarioModule } from './component/usuario.module';
+import { PrincipalModule } from './component/principal.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PlantasModule } from './component/plantas.module';
@@ -15,7 +16,7 @@ import { PlantasModule } from './component/plantas.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule ,ReactiveFormsModule, UsuarioModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule ,ReactiveFormsModule, UsuarioModule, PrincipalModule, PlantasModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

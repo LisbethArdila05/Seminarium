@@ -54,8 +54,16 @@ header .inicio{
     font-size: 1.2rem;
 }
 .tabla td{
+    height: 5vh;
+    background-color: aqua;
     font-size: 1rem;
     text-align: center;
 }
+td ion-icon{
+    font-size: 1.7em;
+    padding: 10px;
+    cursor: pointer;
+}
+
 
 
