@@ -11,26 +11,26 @@ export const createPlanta = async (reques, response) => {
                 precio
             }
         })
-        response.status(201).json({message:'crear planta'})
+        response.status(201).json({message:'planta creada'})
     } 
     catch (error) {
         return response.status(500).json({message:'planta existente'})    
     }
 }
-export const getPlantaBynombre = async (reques, response) => {
+export const getPlantaByID = async (reques, response) => {
     try {
-        const {nombre} = reques.body;
-        const plantaNombre = await prisma.planta.findUnique({
+        const {id} = reques.params;
+        const plantaID = await prisma.planta.findUnique({
             where: 
             {
-                nombre: nombre
+                id: Number(id)
             } ,
         })
-
         response.status(201).json({message:'planta encontrada'})
-
+        console.log(plantaID)
     } 
     catch (error) {
+        console.log(error)
         return response.status(500).json({message:'planta no encontrada'})
     }
 }
@@ -38,6 +38,7 @@ export const getPlantaBynombre = async (reques, response) => {
 export const getPlanta = async (reques, response) => {
     try {
         const plantas = await prisma.planta.findMany();
+        console.log(plantas)
         response.status(201).json({message: 'plantas'})
     } 
     catch (error) {
@@ -46,10 +47,10 @@ export const getPlanta = async (reques, response) => {
 }
 export const deletePlanta = async (reques, response) => {
     try {
-        const {nombre} = reques.body;
+        const {id} = reques.params;
         const Delplanta = await prisma.planta.delete({
             where:{
-                nombre: nombre
+                id: Number(id)
             },
         }) 
         response.status(201).json({message:'planta eliminada'})   
@@ -60,14 +61,16 @@ export const deletePlanta = async (reques, response) => {
 }
 export const updatePlanta = async (reques, response) => {
     try {
-        const {nombre, precio} = reques.body;
+        const {id} = reques.params;
+        const {nombre, precio, cantidad} = reques.body;
         const UpdateP = await prisma.planta.update({
             where:{
-                nombre: nombre
+                id: Number(id)
             },
             data:{
                 nombre: nombre,
-                precio: precio
+                precio: precio,
+                cantidad: cantidad
             },
         })
         response.status(201).json({message:'planta actualizada'})
