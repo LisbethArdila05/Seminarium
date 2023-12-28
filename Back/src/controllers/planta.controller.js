@@ -19,44 +19,32 @@ export const createPlanta = async (reques, response) => {
 }
 export const getPlantaByID = async (reques, response) => {
     try {
-        const {id} = reques.params;
-        const plantaID = await prisma.planta.findUnique({
+        const {nombre} = reques.body;
+        const plantaID = await prisma.planta.findMany({
             where: 
             {
-                id: Number(id)
+                nombre:{
+                   contains: nombre ||''
+                }
             } ,
-        })
-        response.status(201).json({message:'planta encontrada'})
+        }
+        )
         console.log(plantaID)
+        response.status(201).json({plantaID})
     } 
     catch (error) {
         console.log(error)
         return response.status(500).json({message:'planta no encontrada'})
     }
 }
-
 export const getPlanta = async (reques, response) => {
     try {
         const plantas = await prisma.planta.findMany();
-        console.log(plantas)
-        response.status(201).json({message: 'plantas'})
+        response.status(201).json({plantas})
     } 
     catch (error) {
+        console.error(error);
         return response.status(500).json({message:'error en plantas'})
-    }
-}
-export const deletePlanta = async (reques, response) => {
-    try {
-        const {id} = reques.params;
-        const Delplanta = await prisma.planta.delete({
-            where:{
-                id: Number(id)
-            },
-        }) 
-        response.status(201).json({message:'planta eliminada'})   
-    } 
-    catch (error) {
-        return response.status(500).json({message:'error al eliminar planta'})
     }
 }
 export const updatePlanta = async (reques, response) => {
