@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PlantasComponent } from './plantas/plantas.component';
 import { CrearplantaComponent } from './plantas/crearplanta/crearplanta.component';
+import { EditarplantaComponent } from './plantas/editarplanta/editarplanta.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path:'crearplanta',
     component: CrearplantaComponent
+  },
+  {
+    path:'editarplanta/:id',
+    component: EditarplantaComponent
   }
 ];
 
@@ -23,3 +28,4 @@ export class PlantasRoutingModule { }
 
 export const plantaRouting = [PlantasComponent]
 export const CrearPRouting = [CrearplantaComponent]
+export const EditarPRouting = [EditarplantaComponent]

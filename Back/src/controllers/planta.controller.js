@@ -61,7 +61,7 @@ export const updatePlanta = async (reques, response) => {
                 cantidad: cantidad
             },
         })
-        response.status(201).json({message:'planta actualizada'})
+        response.status(200).json(UpdateP)
     } catch (error) {
         return response.status(500).json({message:'error al actalizar'})
     }

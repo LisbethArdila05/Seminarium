@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
+import { ServicePlantComponent } from 'src/app/service/service-plant.component';
+import { plant } from './model/interface.plant';
+
+
+
 
 @Component({
   selector: 'app-plantas',
@@ -7,9 +12,49 @@ import { RouterModule, Router } from '@angular/router';
   styleUrls: ['./plantas.component.scss'],
 })
 export class PlantasComponent  implements OnInit {
-
-  constructor( private router: Router) { }
-
-  ngOnInit() {}
+  dtOptions: DataTables.Settings = {};
+  Bplant: plant[]=[];
+  listplant: plant[] = [];
+  filtroNombre:string= '';
  
+
+  constructor( private router: Router, private servicep: ServicePlantComponent) { }
+
+  ngOnInit() {
+
+    this.dtOptions = {
+      columns: [
+        { title: 'Nombre', data: 'nombre' },
+        { title: 'Cantidad', data: 'cantidad' },
+        { title: 'Precio', data: 'precio' },
+        { title: 'Acción', data: 'accion' },
+        // Agrega más columnas según tus datos
+      ],
+      data: this.listplant, // Asigna el array de plantas a la propiedad data
+      paging: true,
+      searching: true,
+    }
+    this.plantas()
+    
+  }
+  plantas(){
+    this.servicep.getPlantas().subscribe((res:any) => {
+      for(let plants of res.plantas){
+        this.listplant.push(plants)
+      }
+    },(error) => {
+      console.log(error)
+    }) 
+  }
+  buscar(filtroNombre:string){
+    this.Bplant = this.listplant.filter(planta =>
+      planta.nombre.toLowerCase().includes(filtroNombre.toLowerCase()),
+      console.log(this.Bplant)
+    );
+  }
+  RedirecEditar(id: any) {
+    this.router.navigate(['/editarplanta', id])
+    
+  }
 }
+ 

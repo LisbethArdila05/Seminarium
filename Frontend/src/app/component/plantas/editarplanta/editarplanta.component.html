@@ -1,0 +1,25 @@
+<section class="modal-crear">
+    <article class="wrapper"> 
+      <h1>Editar planta</h1>
+      <article class="form-modal">
+        <form [formGroup]="formPathPlanta">
+          <article class="propiedades">
+            <input type="text" formControlName="nombre">
+            <label> Nombre de la planta</label>
+          </article>
+          <article class="propiedades">
+            <input type="number" formControlName="precio">
+            <label> Cantidad en numero</label>
+          </article>
+          <article class="propiedades">
+            <input type="number" formControlName="cantidad">
+            <label> Precio unitario</label>
+          </article>
+          <button type="submit" (click)="editar_planta()">Editar
+          </button>
+          <button [routerLink]= "['/planta']">Cancelar</button>
+        </form>
+      </article>
+    </article>
+  </section>
+  

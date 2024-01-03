@@ -1,27 +1,31 @@
 <section class="menu-principal">
         <header>
-            <h1>REGISTRO DE PLANTAS</h1>
+            <h1>REGISTRO DE PLANTAS</h1> 
             <article class="inicio">
                 <a routerLink="/crearplanta"><ion-icon name="add-circle-outline"></ion-icon>Agregar un planta</a>
-                <div class="buscar"><input type="text"><ion-icon name="search-outline"></ion-icon></div>
+                <div class="buscar">
+                    <input type="text" [(ngModel)]="filtroNombre">
+                    <a (click)="buscar(filtroNombre)"><ion-icon name="search-outline"></ion-icon></a>
+                </div>
             </article>
         </header>
     <article class="tabla">
-        <table>
+        <table  dataTable dtOptions="dtOptions">
             <tr>
                 <th>Planta</th>
-                <th>Cantidad</th>
+                <th>Cantidad</th> 
                 <th>Precio</th>
                 <th>Accion</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><ion-icon name="trash-outline"></ion-icon> <ion-icon name="create-outline"></ion-icon></td>
+            <tr *ngFor="let list of listplant">
+                <td>{{list.nombre}}</td>
+                <td>{{list.cantidad}}</td>
+                <td>{{list.precio}}</td>
+                <td> 
+                    <a (click)="RedirecEditar(list.id)"><ion-icon name="create-outline"></ion-icon></a>
+                </td>
             </tr>
         </table>
-
     </article>
     <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
     <script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormControl, Validators, FormBuilder, FormGroup} from '@angular/forms';
-
 import { ServiceUserComponent } from 'src/app/service/service-user.component';
 import Swal from 'sweetalert2'
 
@@ -44,7 +42,7 @@ export class RegistroComponent  implements OnInit {
       Swal.fire({
         title: "Registro de usuario",
         text: "Registro exitoso",
-        icon: "success"
+        icon: "success" 
       });
     }, 
     (error: any) =>{

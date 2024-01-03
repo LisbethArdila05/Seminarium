@@ -8,7 +8,7 @@ const routes = Router()
 
 routes
 .get('/', getPlanta)  //obtener
-.post('/', getPlantaByID)
+.post('/', getPlantaByID)//obtener una
 .post('/', validaPlanta, createPlanta) //crear
 .patch('/:id', validaPlanta, updatePlanta) //actualizar
 

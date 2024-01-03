@@ -3,6 +3,7 @@
     font-family: 'Raleway', sans-serif;
 }
 section{
+    background-image: url('../../../../assets/5723322.jpg');
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,8 +15,8 @@ section{
 .wrapper{
     position: relative;
     width: 400px;
-    background-color: green;
     border: 2px solid rgba(255, 255, 255, .6);
+    backdrop-filter: blur(15px);
     height: 450px;
     display: flex;
     justify-content: center;
