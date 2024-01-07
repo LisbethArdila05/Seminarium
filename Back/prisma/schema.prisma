@@ -19,7 +19,30 @@ model user{
 
 model planta{
   id Int @id @default(autoincrement())
-  nombre String
+  nombre String 
   cantidad Int
   precio Int
+  tamano Int
+  ventas ventas[]
+  stock stock[]
+  
 }
+
+model ventas{
+  id Int @id @default(autoincrement())
+  cantidad Int
+  precio Int
+  tamanoPlanta Int
+  fechaVenta DateTime
+  planta planta @relation(fields: [plantaId], references: [id])
+  plantaId Int
+}
+
+model stock {
+  id Int @id @default(autoincrement())
+  cantidad Int
+  planta planta @relation(fields: [plantaId], references: [id])
+  plantaId Int
+}
+
+
