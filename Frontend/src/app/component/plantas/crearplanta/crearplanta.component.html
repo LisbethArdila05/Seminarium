@@ -1,19 +1,29 @@
+<section class="img-creaplanta">
+  <picture>
+    <img src="">
+  </picture>
+</section>
 <section class="modal-crear">
   <article class="wrapper"> 
     <h1>Agregar una planta</h1>
     <article class="form-modal">
       <form [formGroup]="formPostPlanta" (ngSubmit) = "crear_planta()">
         <article class="propiedades">
-          <input type="text" formControlName="nombre">
-          <label> Nombre de la planta</label>
+          <input type="text" formControlName="nombre" placeholder="Nombre de la planta">
         </article>
         <article class="propiedades">
-          <input type="number" formControlName="precio">
-          <label> Cantidad en numero</label>
+          <input type="number" formControlName="precio" placeholder="Cantidad en numero">
         </article>
         <article class="propiedades">
-          <input type="number" formControlName="cantidad">
-          <label> Precio unitario</label>
+          <input type="number" formControlName="cantidad" placeholder="Precio unitario">
+        </article>
+        <article class="propiedades">
+            <select id="opciones" name="opciones">
+              <option value="">Semilla(en bolsa de papel)</option>
+              <option value="">Esqueje</option>
+              <option value="">Bolsa semillero</option>
+              <option value="">Bolsa (Semillero)</option>
+            </select>
         </article>
         <button type="submit">Crear</button>
         <button [routerLink]= "['/planta']">Cancelar</button>

@@ -9,18 +9,25 @@ import { IonicModule } from '@ionic/angular';
 import { DataTablesModule} from 'angular-datatables';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+import { PipePlantsPipe } from './plantas/pipe/plantas.pipe';
+import { SharedModuleModule } from '../Shared/shared-module.module';
 
 
 
 @NgModule({
-  declarations: [plantaRouting, CrearPRouting, EditarPRouting],
+  declarations: [plantaRouting, CrearPRouting, EditarPRouting, PipePlantsPipe],
   imports: [
     CommonModule,
     PlantasRoutingModule,
     IonicModule,
     ReactiveFormsModule,
     FormsModule,
-    DataTablesModule
+    DataTablesModule,
+    NgxPaginationModule,
+    SharedModuleModule
+    
   ]
 })
 export class PlantasModule { } 

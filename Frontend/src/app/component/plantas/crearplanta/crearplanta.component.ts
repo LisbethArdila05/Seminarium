@@ -13,7 +13,8 @@ export class CrearplantaComponent  implements OnInit {
   formPostPlanta = this.fb.group({
     nombre: ['', Validators.required],
     precio: ['', Validators.required],
-    cantidad: ['', Validators.required]
+    cantidad: ['', Validators.required],
+    tamano: ['', Validators.required]
   })
 
   get getNombre(): FormControl{
@@ -25,6 +26,9 @@ export class CrearplantaComponent  implements OnInit {
   get getCantidad(): FormControl{
     return this.formPostPlanta.get('cantidad') as FormControl
  }
+  get getTamano(): FormControl{
+    return this.formPostPlanta.get('tamano') as FormControl
+  }
 
   constructor(private servicep: ServicePlantComponent, private fb: FormBuilder) { }
 

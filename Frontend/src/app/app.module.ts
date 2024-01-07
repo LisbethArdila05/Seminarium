@@ -13,12 +13,16 @@ import { PrincipalModule } from './component/principal.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PlantasModule } from './component/plantas.module';
-import { MenuModule } from './component/menu/menu.module';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SharedModuleModule } from './Shared/shared-module.module';
+import { VentasModule } from './component/ventas/ventas.module';
+
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule ,ReactiveFormsModule, UsuarioModule, PrincipalModule, PlantasModule, MenuModule, DataTablesModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule ,ReactiveFormsModule, NgxPaginationModule, UsuarioModule, PrincipalModule, PlantasModule, VentasModule, DataTablesModule, SharedModuleModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

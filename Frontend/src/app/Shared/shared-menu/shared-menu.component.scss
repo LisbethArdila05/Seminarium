@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+*{
+    font-family: 'Raleway', sans-serif;
+}
+:root{
+    /* transittions*/
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+//menu-shared.comoponent
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 270px;
+    background: #C2D1C3;
+    z-index: 100;
+    transition: transform var(--tran-02);
+}
+.sidebar header{
+    display: flex;
+    position: relative;
+}
+.sidebar .img-text img{
+    position: relative;
+    margin: 5% 5%;
+    width: 100px;
+}
+.sidebar header ion-icon{
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+    height: 30px;
+    width: 30px;
+    background: #4c9b6c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+}
+.sidebar li{
+    height: 50px;
+    margin-top: 20px;
+    margin-right: 5%;
+    margin-left: -15%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.sidebar li ion-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    font-size: 25px;
+}
+.sidebar li ion-icon,
+.sidebar li .text{
+    color: #000;
+    transition: var(--tran-02);
+}
+.sidebar li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--tran-04);
+}
+.sidebar li a:hover{
+    background: #4c9b6c;
+}
+.sidebar li a:hover ion-icon,
+.sidebar li a:hover .text{
+    color: #fff;
+}
+.close{
+    width: 98px;
+}
+.close .text{
+    opacity: 0;
+}
+.components{
+    position: relative;
+    left: 270px;
+    width: calc(100% - 270px);
+    height: 100vh;
+    transition: var(--tran-05);
+}
+.sidebar.close ~ .components,
+.menu-open .components{
+    left: 98px;
+    width: calc(100% - 98px);
+}
+
+

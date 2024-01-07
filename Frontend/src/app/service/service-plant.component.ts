@@ -25,7 +25,7 @@ export class ServicePlantComponent{
   } 
   getIdplantas(nombre:string):Observable<plant>{
     const params = {nombre: nombre}
-    return this.http.post<plant>(`${this.url}/planta`, params)
+    return this.http.post<plant>(`${this.url}/planta/byname`, params)
   }
   updateplanta(id:number, data:any):Observable<plant>{
     return this.http.patch<plant>(`${this.url}/planta/${id}`,data)

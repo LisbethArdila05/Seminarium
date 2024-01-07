@@ -22,26 +22,29 @@ model planta{
   nombre String 
   cantidad Int
   precio Int
-  tamano Int
+  tamano String
   ventas ventas[]
   stock stock[]
   
+
+  @@unique([id, tamano])
 }
 
 model ventas{
   id Int @id @default(autoincrement())
   cantidad Int
   precio Int
-  tamanoPlanta Int
+  tamanoPlanta String
   fechaVenta DateTime
-  planta planta @relation(fields: [plantaId], references: [id])
+  planta planta @relation(fields: [plantaId, tamanoPlanta], references: [id, tamano])
   plantaId Int
 }
 
 model stock {
   id Int @id @default(autoincrement())
   cantidad Int
-  planta planta @relation(fields: [plantaId], references: [id])
+  tamanoPlan String
+  planta planta @relation(fields: [plantaId, tamanoPlan], references: [id, tamano])
   plantaId Int
 }
 

@@ -1,32 +1,63 @@
+<app-shared-menu></app-shared-menu>
 <section class="menu-principal">
         <header>
             <h1>REGISTRO DE PLANTAS</h1> 
+            <button class="Btn" routerLink="/crearplanta">
+                <div class="sign">+</div>
+                <div class="text">Registrar</div>
+            </button>
             <article class="inicio">
-                <a routerLink="/crearplanta"><ion-icon name="add-circle-outline"></ion-icon>Agregar un planta</a>
+                <div class="show-entries">
+                    <label>Entrada</label>
+                    <select name="" id="" [(ngModel)]="pagesize">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
                 <div class="buscar">
-                    <input type="text" [(ngModel)]="filtroNombre">
-                    <a (click)="buscar(filtroNombre)"><ion-icon name="search-outline"></ion-icon></a>
+                    <input type="text" [(ngModel)]="filtro">
+                    <ion-icon name="search-outline"></ion-icon>
                 </div>
             </article>
         </header>
-    <article class="tabla">
-        <table  dataTable dtOptions="dtOptions">
-            <tr>
-                <th>Planta</th>
-                <th>Cantidad</th> 
-                <th>Precio</th>
-                <th>Accion</th>
-            </tr>
-            <tr *ngFor="let list of listplant">
-                <td>{{list.nombre}}</td>
-                <td>{{list.cantidad}}</td>
-                <td>{{list.precio}}</td>
-                <td> 
-                    <a (click)="RedirecEditar(list.id)"><ion-icon name="create-outline"></ion-icon></a>
-                </td>
-            </tr>
-        </table>
+    <article class="tabla" >
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Tamaño</th>
+                    <th scope="col">Accion</th>
+                  </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of listplant | pipePlants: filtro | paginate: { id: 'plantas' , itemsPerPage: pagesize, currentPage: p }">
+                    <!--<td>{{(index+1)}}</td>-->
+                    <td>{{list.nombre}}</td>
+                    <td>{{list.cantidad}}</td>
+                    <td>{{list.precio}}</td>
+                    <td>{{list.tamano}}</td>
+                    <td>
+                        <a (click)="RedirecEditar(list.id)">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </a>
+                    </td>
+                  </tr>
+            </tbody>
+          </table>
+          <pagination-controls id="plantas"(pageChange)="handlePageChange($event)"
+                previousLabel="Prev"
+                nextLabel="Next">
+          </pagination-controls>
+    </article>
+    <article class="pagination">
+        
     </article>
     <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
     <script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>
 </section>
+<app-shared-menu></app-shared-menu>
+

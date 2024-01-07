@@ -2,33 +2,97 @@
 *{
     font-family: 'Raleway', sans-serif;
 }
+//otro componente
+/*.menu-principal{
+  position: fixed;
+  width: calc(100% - 98px);
+  margin-left: 20%;
+}*/
 header{
-    height: 100%;
+    height: 80%;
     width: 100%;
 }
 header h1{
     text-align: center;
     font-weight: bold;
+    
 }
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border-radius: calc(45px/2);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */     
+    left: 850px;
+    bottom: 50px;
+  }
+  /* plus sign */
+  .sign {
+    width: 100%;
+    font-size: 2.2em;
+    color: white;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* text */
+  .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition-duration: .3s;
+  }
+  /* hover effect on button width */
+  .Btn:hover {
+    width: 125px;
+    transition-duration: .3s;
+  }
+  
+  .Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 15px;
+  }
+  /* hover effect button's text */
+  .Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 15px;
+  }
+  /* button click effect*/
+  .Btn:active {
+    transform: translate(2px ,2px);
+  }
+  //hasta aca el boton 
 header .inicio{
     position: absolute;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 60px;
-    width: 100%;
-}
-.inicio a{
-    position: relative;
-    text-decoration: none;
-    color: #000;       
-    font-size: 1.5rem;
+    margin-left: 10%;
+    width: 80%;
 }
 .inicio .buscar{
     position: relative;
+    margin-left: 70%;
 }
 .buscar input{
-    width: 100%;
+    width: 130%;
     height: 30px;
     border: none;
     outline: none;
@@ -40,24 +104,33 @@ header .inicio{
 .buscar ion-icon{
     position: absolute;
     color: #000;
-    font-size: 1.4rem;
-    top: 5px;
-    right: 8px;
+    font-size: 1.8rem;
+    bottom: 2%;
+    left: 107%;
 }
+//tabla
 .tabla table{
+    //background-color: #38ef7d;
     position: absolute;
     width: 90%;
     table-layout: fixed;
     height: 30px;
-    top: 90px;
+    top: 20%;
     margin: 65px;
     font-size: 1.2rem;
 }
+.tabla th{
+    border-bottom: 1px solid #dddddd;
+    line-height: 250%;
+}
+
 .tabla td{
+    border-bottom: 1px solid #dddddd;
     height: 5vh;
     font-size: 1rem;
     text-align: center;
 }
+
 td ion-icon{
     font-size: 1.7em;
     padding: 10px;

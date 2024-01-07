@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { ServicePlantComponent } from 'src/app/service/service-plant.component';
 import { plant } from './model/interface.plant';
-
-
-
 
 @Component({
   selector: 'app-plantas',
@@ -12,11 +9,12 @@ import { plant } from './model/interface.plant';
   styleUrls: ['./plantas.component.scss'],
 })
 export class PlantasComponent  implements OnInit {
+
   dtOptions: DataTables.Settings = {};
-  Bplant: plant[]=[];
   listplant: plant[] = [];
-  filtroNombre:string= '';
- 
+  filtro: string = "";
+  p: number = 1;
+  pagesize:number = 10;
 
   constructor( private router: Router, private servicep: ServicePlantComponent) { }
 
@@ -34,27 +32,23 @@ export class PlantasComponent  implements OnInit {
       paging: true,
       searching: true,
     }
-    this.plantas()
-    
+    this.plantas() 
   }
   plantas(){
     this.servicep.getPlantas().subscribe((res:any) => {
       for(let plants of res.plantas){
         this.listplant.push(plants)
       }
+      console.log(this.filtro)
     },(error) => {
       console.log(error)
     }) 
   }
-  buscar(filtroNombre:string){
-    this.Bplant = this.listplant.filter(planta =>
-      planta.nombre.toLowerCase().includes(filtroNombre.toLowerCase()),
-      console.log(this.Bplant)
-    );
-  }
   RedirecEditar(id: any) {
     this.router.navigate(['/editarplanta', id])
-    
+  }
+  handlePageChange(event:any) {
+    this.p = event;
   }
 }
  
