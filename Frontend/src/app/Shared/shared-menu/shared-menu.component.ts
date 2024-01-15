@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { ServiceMenuService } from 'src/app/service/service-menu.service';
+
 
 
 @Component({
@@ -12,13 +12,8 @@ export class SharedMenuComponent  implements OnInit {
 
   isClose = true
 
-  constructor(private router: Router, private serviceM: ServiceMenuService) { }
+  constructor(private router: Router) { }
   ngOnInit() {}
  
-  toggleMene(){
-    this.isClose = !this.isClose
-  }
-  toggleMenu() {
-    this.serviceM.toggleMenu();
-  }
+
 }

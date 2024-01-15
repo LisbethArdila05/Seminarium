@@ -1,0 +1,44 @@
+<!--el usuario ingreso con exito Login y registro-->
+<section class="login" *ngIf="tipoalerta === 'bienvenido'">
+    <article class="etiqueta">
+        <img src="../../../assets/muyfeliz.png">
+        <article class="mensaje">
+            <h1>Bienvenido</h1>
+            <button (click)="onAceptarClick()">Aceptar</button>
+        </article>
+    </article>
+</section>
+<!--el usuario comete un error-->
+<section class="errorAlerta" *ngIf="tipoalerta === 'error'">
+    <article class="etiqueta">
+        <img src="../../../assets/triste.png">
+        <article class="mensaje">
+            <h1>Error</h1>
+            <button (click)="OnErrorClick()">Aceptar</button>
+        </article>
+    </article> 
+</section>
+<!--cuando realiza un cambio-->
+<section class="question" *ngIf="tipoalerta === 'requestAlert'">
+    <article class="etiqueta">
+        <img src="../../../assets/sorpresa.png">
+        <article class="mensaje">
+            <h1>¿Desea continuar con esta accion?</h1>
+            <div class="butonQ">
+                <button (click)="onRequest('si')">Si</button>
+                <button class="butonno" (click)="onRequest('no')">No</button>
+            </div>
+        </article>
+    </article>
+</section>
+<!--el usuario registro con exito una planta o una venta-->
+<section class="RegistroExitoso" *ngIf="tipoalerta === 'registroexitoso'">
+    <article class="etiqueta">
+        <img src="../../../assets/muyfeliz.png">
+        <article class="mensaje">
+            <h1>Registro Exitoso</h1>
+            <button (click)="onRegistrarClick()">Aceptar</button>
+        </article>
+    </article> 
+</section>
+  

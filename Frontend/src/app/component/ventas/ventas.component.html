@@ -1,10 +1,58 @@
 <div>
 <app-shared-menu></app-shared-menu>
 </div>
-<div>
-<p>
-  ventas works!
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum suscipit dolore in magni alias magnam accusantium soluta commodi? Vitae ratione officia consequatur dolores porro necessitatibus nostrum. Enim accusamus voluptas iure.
-  <!--*ngIf="isOpen"-->
-</p>
-</div>
+<ion-button id="aceptar-login" type="sutmit">aceptar</ion-button>
+<section class="Ventas">
+  <h1>Registro de ventas</h1>
+  <button class="Btn" routerLink="/">
+    <div class="sign">+</div>
+    <div class="text">Registrar</div>
+  </button>
+  <article class="inicio">
+    <div class="show-entries">
+        <label>Entrada</label>
+        <select name="" id="">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+        </select>
+    </div>
+    <div class="buscar">
+        <input type="text">
+        <ion-icon name="search-outline"></ion-icon>
+    </div>
+  </article>
+  <article class="tabla">
+    <table class="table-ventas">
+      <thead class="table-light">
+        <tr>
+          <th>Planta</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Tamaño</th>
+          <th>Fecha</th>
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td> 
+            <a href="">
+              <ion-icon name="create-outline"></ion-icon>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <article class="grafica">
+    
+  </article>
+    <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
+    <script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>
+</section>

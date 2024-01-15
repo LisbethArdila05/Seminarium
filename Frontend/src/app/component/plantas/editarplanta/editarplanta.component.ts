@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup} from '@angular/forms';
 import { ServicePlantComponent } from 'src/app/service/service-plant.component';
 import { ActivatedRoute } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 
 @Component({
@@ -14,30 +15,34 @@ export class EditarplantaComponent  implements OnInit {
 
   idPlant: number = 0;
 
+  RegistroExito: boolean = false;
+  RegistroError: boolean = false
+  Request: boolean = false
+
   formPathPlanta = this.fb.group({
     nombre: ['', Validators.required],
-    precio: ['', Validators.required],
-    cantidad: ['', Validators.required]
+    precioU: ['', Validators.required],
+    PrecioM: ['', Validators.required]
   })
 
   get getNombre(): FormControl{
     return this.formPathPlanta.get('nombre') as FormControl
   }
-  get getPrecio(): FormControl{
-    return this.formPathPlanta.get('precio') as FormControl
+  get getPrecioU(): FormControl{
+    return this.formPathPlanta.get('precioU') as FormControl
   }
-  get getCantidad(): FormControl{
-    return this.formPathPlanta.get('cantidad') as FormControl
+  get getPrecioM(): FormControl{
+    return this.formPathPlanta.get('PrecioM') as FormControl
  }
 
-  constructor(private servicep: ServicePlantComponent, private fb: FormBuilder, private route: ActivatedRoute) { }
+  constructor(private servicep: ServicePlantComponent, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
     this.route.params.subscribe(params =>{
       this.idPlant = +params['id']
     })
-  }
+  } 
 
   editar_planta(){
     const data = this.formPathPlanta.value
@@ -45,9 +50,24 @@ export class EditarplantaComponent  implements OnInit {
       console.log('exitoso')
     },(error:any)=>{
       console.log(error)
-    }
-    ) 
+    }) 
+  }
+  onRegistroExito(){
+    this.router.navigateByUrl('/planta');
   }
 
-  
+  onRegistroError(){
+    this.RegistroError = false
+  }
+
+  onAlertSi(){
+    this.router.navigateByUrl('/planta');
+    this.Request = false
+   
+  }
+  onAlertNo(){
+    this.Request = false
+  }
 }
+
+

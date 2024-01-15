@@ -1,0 +1,77 @@
+.login{
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.etiqueta{
+    background-color: #fff;
+    width: 20%;
+    height: 40%;
+    border-radius: 10px;
+    margin: 10% 40%;
+}
+.etiqueta img{
+    width: 35%;
+    height: 40%;
+    margin: 2% 33%;
+}
+.mensaje h1{
+    text-align: center;
+    top: -6%;
+}
+.mensaje button{
+    background-color: aqua;
+    height: 5vh;
+    width: 30%;
+    border-radius: 7%;
+    margin: 0 35%;
+}
+.errorAlerta{
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.RegistroExitoso {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.question {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+}
+.question h1{
+    font-size: 1.1em;
+}
+.butonQ{
+    width: 50%;
+    height: 7%;
+}
+.butonQ button{
+    height: 5vh;
+    width: 5vw;
+    border-radius: 7%;
+}
+.butonno{
+    position: relative;
+    left: 80%;
+    bottom: 32px;
+}

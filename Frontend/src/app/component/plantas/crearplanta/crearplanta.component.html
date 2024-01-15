@@ -1,33 +1,43 @@
-<section class="img-creaplanta">
-  <picture>
-    <img src="">
-  </picture>
-</section>
+<body>
 <section class="modal-crear">
+  <article class="img-planta">
+    <img src="../../../../assets/registrarplanta.jpg" alt="">
+  </article>
   <article class="wrapper"> 
-    <h1>Agregar una planta</h1>
+    <h1>Agregar planta</h1>
     <article class="form-modal">
       <form [formGroup]="formPostPlanta" (ngSubmit) = "crear_planta()">
         <article class="propiedades">
-          <input type="text" formControlName="nombre" placeholder="Nombre de la planta">
+          <input type="text" formControlName="nombre" placeholder="Nombre de la planta" [ngClass]="{'is-invalid animated shake': getNombre.invalid && getNombre.touched}">
         </article>
         <article class="propiedades">
-          <input type="number" formControlName="precio" placeholder="Cantidad en numero">
+          <input type="number" formControlName="precioU" placeholder="Precio Unitario" [ngClass]="{'is-invalid animated shake': getPreciou.invalid && getPreciou.touched}">
         </article>
         <article class="propiedades">
-          <input type="number" formControlName="cantidad" placeholder="Precio unitario">
+          <input type="number" formControlName="PrecioM" placeholder="Precio al por mayor" [ngClass]="{'is-invalid animated shake': getPreciom.invalid && getPreciom.touched}">
         </article>
         <article class="propiedades">
-            <select id="opciones" name="opciones">
-              <option value="">Semilla(en bolsa de papel)</option>
-              <option value="">Esqueje</option>
-              <option value="">Bolsa semillero</option>
-              <option value="">Bolsa (Semillero)</option>
-            </select>
+          <input type="number" formControlName="cantidad" placeholder="Cantidad" [ngClass]="{'is-invalid animated shake': getCantidad.invalid && getCantidad.touched}">
         </article>
-        <button type="submit">Crear</button>
-        <button [routerLink]= "['/planta']">Cancelar</button>
+        <button type="button" class="cancelar" (click)=" Request = true ">Cancelar</button>
+        <button type="submit" class="crear" [disabled]="formPostPlanta.invalid">Crear</button>
       </form>
-    </article>
+    </article>  
   </article>
+  <div *ngIf="RegistroExito">
+    <app-shared-alert-plant (registrarClick)="onRegistroExito()" [tipoalerta]="'registroexitoso'">
+    </app-shared-alert-plant>
+ </div> 
+ <div *ngIf="RegistroError">
+  <app-shared-alert-plant (errorClick)="onRegistroError()" [tipoalerta]="'error'">
+  </app-shared-alert-plant>
+</div>
+ <div *ngIf="Request">
+    <app-shared-alert-plant 
+      (RequestSi)="onAlertSi()" 
+      (RequestNo)="onAlertNo()" 
+      [tipoalerta]="'requestAlert'">
+    </app-shared-alert-plant>
+ </div>
 </section>
+</body>

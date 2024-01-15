@@ -4,47 +4,47 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model user{
+model users{
   id Int @id @default(autoincrement())
   mail  String @unique
   user  String @unique
-  password String 
+  password String
 } 
 
-model planta{
+model plantas{
   id Int @id @default(autoincrement())
-  nombre String 
+  nombre String @unique
   cantidad Int
-  precio Int
-  tamano String
-  ventas ventas[]
-  stock stock[]
-  
-
-  @@unique([id, tamano])
+  precioU Int
+  PrecioM Int
+  estado Boolean
+  ventas venta[]
+  stock stocks[]
 }
 
-model ventas{
+model venta{
   id Int @id @default(autoincrement())
+  NombrePlant String
   cantidad Int
   precio Int
-  tamanoPlanta String
+  tamanoPlanta String @unique
   fechaVenta DateTime
-  planta planta @relation(fields: [plantaId, tamanoPlanta], references: [id, tamano])
+  planta plantas @relation(fields: [plantaId], references: [id])
   plantaId Int
+  stock stocks[]
 }
 
-model stock {
+model stocks {
   id Int @id @default(autoincrement())
   cantidad Int
+  planta plantas @relation(fields: [plantaId], references: [id])
+  ventas venta @relation(fields: [tamanoPlan], references: [tamanoPlanta])
   tamanoPlan String
-  planta planta @relation(fields: [plantaId, tamanoPlan], references: [id, tamano])
   plantaId Int
 }
 

@@ -13,7 +13,7 @@ import {ValResult} from '../helpers/Validator.helpers.js'
     .exists()
     .trim() 
     .notEmpty()
-    .isLength({min: 6}),
+    .isLength({min: 8}),
     (req, res, next) => {
         ValResult(req, res, next)
     }
@@ -26,7 +26,7 @@ export const LUser = [
     .exists()
     .trim() 
     .notEmpty()
-    .isLength({min: 6}),
+    .isLength({min: 8}),
     (req, res, next) => {
         ValResult(req, res, next)
     }

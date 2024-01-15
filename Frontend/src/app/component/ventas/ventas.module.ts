@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { VentasRoutingModule } from './ventas-routing.module';
 import { VentaRouting } from './ventas-routing.module';
 import { SharedModuleModule } from 'src/app/Shared/shared-module.module';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { SharedModuleModule } from 'src/app/Shared/shared-module.module';
   imports: [
     CommonModule,
     VentasRoutingModule,
-    SharedModuleModule
+    SharedModuleModule,
+    IonicModule
   ]
 })
 export class VentasModule { }

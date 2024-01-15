@@ -1,0 +1,35 @@
+<body>
+  <section class="modalEdit-c">
+    <article class="imagen">
+      <img src="" alt="">
+    </article>
+    <article class=" wrapper">
+      <h1>Agregar stock</h1>
+      <article class="form-modal">
+        <form [formGroup]="formPutCantidad">
+          <article class="propiedades">
+            <input type="number" class="stock" formControlName="CantidadNueva" [ngClass]="{'is-invalid animated shake': getNCantidad.invalid && getNCantidad.touched}">
+            <ion-icon name="file-tray-outline"></ion-icon>
+          </article>
+          <button type="button" (click)="Request = true">Cancelar</button>
+          <button type="submit" (click)="editar_Cantidad()" [disabled]="formPutCantidad.invalid">Aceptar</button>
+        </form>
+      </article>
+    </article>
+  </section>
+  <div *ngIf="RegistroExito">
+    <app-shared-alert-plant (registrarClick)="onRegistroExito()" [tipoalerta]="'registroexitoso'">
+    </app-shared-alert-plant>
+ </div> 
+ <div *ngIf="RegistroError">
+  <app-shared-alert-plant (errorClick)="onRegistroError()" [tipoalerta]="'error'">
+  </app-shared-alert-plant>
+</div>
+ <div *ngIf="Request">
+    <app-shared-alert-plant 
+      (RequestSi)="onAlertSi()" 
+      (RequestNo)="onAlertNo()" 
+      [tipoalerta]="'requestAlert'">
+    </app-shared-alert-plant>
+ </div>
+</body>

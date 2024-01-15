@@ -24,7 +24,8 @@ export class PlantasComponent  implements OnInit {
       columns: [
         { title: 'Nombre', data: 'nombre' },
         { title: 'Cantidad', data: 'cantidad' },
-        { title: 'Precio', data: 'precio' },
+        { title: 'Preciou', data: 'precioU' },
+        { title: 'Preciom', data: 'PrecioM' },
         { title: 'Acción', data: 'accion' },
         // Agrega más columnas según tus datos
       ],
@@ -46,6 +47,9 @@ export class PlantasComponent  implements OnInit {
   }
   RedirecEditar(id: any) {
     this.router.navigate(['/editarplanta', id])
+  }
+  RedirecEditarC(idCantidad: any){
+    this.router.navigate(['/editarcantidad',idCantidad])
   }
   handlePageChange(event:any) {
     this.p = event;

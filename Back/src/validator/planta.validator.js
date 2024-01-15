@@ -9,7 +9,20 @@ export const validaPlanta = [
     .exists()
     .isNumeric()
     .notEmpty(),
-    check('precio')
+    check('precioU')
+    .exists()
+    .isNumeric()
+    .notEmpty(),
+    check('PrecioM')
+    .exists()
+    .isNumeric()
+    .notEmpty(),
+    (req, res, next) => {
+        ValResult(req, res, next)
+    }
+]
+export const validaCantidad = [
+    check('CantidadNueva')
     .exists()
     .isNumeric()
     .notEmpty(),

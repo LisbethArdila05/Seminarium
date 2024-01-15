@@ -5,21 +5,38 @@
       <form [formGroup]="LoginUser" (ngSubmit) = "LoginU()"  >
         <fieldset class="loginUser">
           <ion-icon name="person-outline"></ion-icon> 
-          <input type="text" id="user" formControlName="user"> 
-          <label>Nombre de usuario</label>
+          <input type="text" id="user" placeholder="Nombre de usuario" formControlName="user" [ngClass]="{'is-invalid animated shake': getLuser.invalid && getLuser.touched}">
+          <div class="alert alert-danger mt-2" [hidden]="getLuser.valid || getLuser.pristine">
+            El campo nombre es obligatorio
+          </div> 
         </fieldset>
         <fieldset class="loginUser">
           <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="text" id="password" formControlName="password">
-          <label> contraseña</label>
+          <input type="password" id="password" placeholder="Contraseña" formControlName="password" [ngClass]="{'is-invalid animated shake': getLpassword.invalid && getLpassword.touched}">
+          <div class="alert alert-danger mt-2" [hidden]="getLpassword.valid || getLpassword.pristine">
+            <span *ngIf="getLpassword.errors?.['required']">
+              El campo Password es obligatorio
+            </span>
+            <span *ngIf="getLpassword.errors?.['min']">
+              La contraseña que ingresó es muy corta
+            </span>
+          </div>
         </fieldset>
-        <button type="submit">Aceptar</button>
+        <button type="submit" id="aceptar-login" [disabled]="LoginUser.invalid">Aceptar</button>
          <article class="login">
-            <p>¿No tienes una cuenta?<a href="#">Registrarse</a></p>
+            <p>¿No tienes una cuenta?<a href="../registro">Registrarse</a></p>
          </article>
-      </form>
+      </form> 
     </article>
   </article>
+  <div *ngIf="mostrarBienvenido">
+    <app-shared-alert-plant (aceptarClick)="onAceptarAlerta()" [tipoalerta]="'bienvenido'"></app-shared-alert-plant>
+ </div> 
+ <div *ngIf="mostrarError"> 
+    <app-shared-alert-plant (errorClick)="onCloseAlerta()" [tipoalerta]="'error'"></app-shared-alert-plant>
+ </div>
+
   <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
   <script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </section>

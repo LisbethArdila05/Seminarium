@@ -5,28 +5,48 @@
             <form [formGroup]="formUsuario" (ngSubmit) = "crear()" >
                 <fieldset class="registrarUser">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="text" id="mail" formControlName="mail">
+                    <input type="email" id="mail" formControlName="mail" [ngClass]="{'is-invalid animated shake': getmail.invalid && getmail.touched}">
+                    <div class="alert alert-danger mt-2" [hidden]="getmail.valid || getmail.pristine">
+                        El campo Email es obligatorio
+                    </div>
                     <label>Email</label>
                 </fieldset>
         
                 <fieldset class="registrarUser">
                     <ion-icon name="person-outline"></ion-icon> 
-                    <input type="text" id="user"  formControlName="user">
+                    <input type="text" id="user"  formControlName="user" [ngClass]="{'is-invalid animated shake': getuser.invalid && getuser.touched}">
+                    <div class="alert alert-danger mt-2" [hidden]="getuser.valid || getuser.pristine">
+                        El campo Usuario es obligatorio
+                    </div>
                     <label>Nombre de usuario</label>
                 </fieldset>
 
                 <fieldset class="registrarUser">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="text" id="password" formControlName="password">
+                    <input type="password" id="password" formControlName="password" [ngClass]="{'is-invalid animated shake': getpassword.invalid && getpassword.touched}">
+                    <div class="alert alert-danger mt-2" [hidden]="getpassword.valid || getpassword.pristine">
+                        <span *ngIf="getpassword.errors?.['required']">
+                          El campo Password es obligatorio
+                        </span>
+                        <span *ngIf="getpassword.errors?.['min']">
+                          La contraseña que ingresó es muy corta
+                        </span>
+                      </div>
                     <label>Contraseña</label>
                 </fieldset>
-                <button type="submit">Crear cuenta</button>
+                <button type="submit"  [disabled]="formUsuario.invalid">Crear cuenta</button>
                 <article class="login">
                     <p>¿Ya tiene una cuenta? <a href="#">Iniciar sesion</a></p>
                 </article>
             </form>
         </article>
     </article>
+    <div *ngIf="mostrarAlerta">
+        <app-shared-alert-plant (aceptarClick)="onAceptarAlerta()" [tipoalerta]="'bienvenido'"></app-shared-alert-plant>
+    </div>
+    <div *ngIf="mostrarError">
+        <app-shared-alert-plant (errorClick)="onCloseAlerta()" [tipoalerta]="'error'"></app-shared-alert-plant>
+    </div>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
         <script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>

@@ -6,6 +6,7 @@ import { LoginRouter } from './usuario-routing.module';
 import { RegistroRouter } from './usuario-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModuleModule } from 'src/app/Shared/shared-module.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     UsuarioRoutingModule,
     IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModuleModule
   ]
 })
 export class UsuarioModule { }

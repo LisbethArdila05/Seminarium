@@ -4,7 +4,7 @@
             <h1>REGISTRO DE PLANTAS</h1> 
             <button class="Btn" routerLink="/crearplanta">
                 <div class="sign">+</div>
-                <div class="text">Registrar</div>
+                <div class="text"> Registrar</div>
             </button>
             <article class="inicio">
                 <div class="show-entries">
@@ -28,19 +28,22 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Cantidad</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Tamaño</th>
+                    <th scope="col">Precio Unitario</th>
+                    <th scope="col">Precio al mayor</th>
                     <th scope="col">Accion</th>
                   </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let list of listplant | pipePlants: filtro | paginate: { id: 'plantas' , itemsPerPage: pagesize, currentPage: p }">
-                    <!--<td>{{(index+1)}}</td>-->
+                    <td>1</td>
                     <td>{{list.nombre}}</td>
                     <td>{{list.cantidad}}</td>
-                    <td>{{list.precio}}</td>
-                    <td>{{list.tamano}}</td>
+                    <td>{{list.precioU}}</td>
+                    <td>{{list.PrecioM}}</td>
                     <td>
+                        <a (click)="RedirecEditarC(list.id)">
+                            <ion-icon name="add-outline"></ion-icon>
+                        </a>
                         <a (click)="RedirecEditar(list.id)">
                             <ion-icon name="create-outline"></ion-icon>
                         </a>
@@ -49,12 +52,9 @@
             </tbody>
           </table>
           <pagination-controls id="plantas"(pageChange)="handlePageChange($event)"
-                previousLabel="Prev"
-                nextLabel="Next">
+                previousLabel="Ant"
+                nextLabel="Sig">
           </pagination-controls>
-    </article>
-    <article class="pagination">
-        
     </article>
     <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
     <script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>

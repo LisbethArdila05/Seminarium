@@ -10,7 +10,7 @@ export const CreateUser = async (request, res) => {
     try {
         const {mail, user, password} = request.body;
         const passwordHash = await encrypt(password)
-        const Newuser = await prisma.user.create({
+        const Newuser = await prisma.users.create({
             data:{
                 mail,
                 user, 
@@ -26,17 +26,15 @@ export const CreateUser = async (request, res) => {
 export const LoginUser = async (request, response) => {
     try {
         const {user, password} = request.body
-        const login = await prisma.user.findUnique({
+        const login = await prisma.users.findUnique({
             where:{
                 user,
             }
-        })
-        
+        })   
         if(!login){ 
             response.status(404).json({message:'No existe, No insista'})
         }
         const checkpassword = await compare(password, login.password)
-
         const tokensession = await tokenSign(login)
 
        if(checkpassword){
@@ -46,7 +44,7 @@ export const LoginUser = async (request, response) => {
             response.status(400).json({message:'la contraseña no'})
         }
     } catch (error) {
-        console.log(error.getmessage)
+        console.log(error.message)
         return response.status(500).json({message:'No, pailas'}) 
     }
 }

@@ -1,25 +1,41 @@
+<body>
 <section class="modal-crear">
+  <article class="img-planta">
+    <img src="../../../../assets/editarplanta.jpg" alt="">
+  </article>
     <article class="wrapper"> 
       <h1>Editar planta</h1>
       <article class="form-modal">
         <form [formGroup]="formPathPlanta">
           <article class="propiedades">
-            <input type="text" formControlName="nombre">
-            <label> Nombre de la planta</label>
+            <input type="text" formControlName="nombre" placeholder="Nombre de la planta" [ngClass]="{'is-invalid animated shake': getNombre.invalid && getNombre.touched}">
           </article>
           <article class="propiedades">
-            <input type="number" formControlName="precio">
-            <label> Cantidad en numero</label>
+            <input type="number" formControlName="precioU" placeholder="Precio Unitario" [ngClass]="{'is-invalid animated shake': getPrecioU.invalid && getPrecioU.touched}">
           </article>
           <article class="propiedades">
-            <input type="number" formControlName="cantidad">
-            <label> Precio unitario</label>
+            <input type="number" formControlName="PrecioM" placeholder="Precio al por mayor" [ngClass]="{'is-invalid animated shake': getPrecioM.invalid && getPrecioM.touched}">
           </article>
-          <button type="submit" (click)="editar_planta()">Editar
-          </button>
-          <button [routerLink]= "['/planta']">Cancelar</button>
+          <button type="button" class="cancelar" (click)="Request = true">Cancelar</button>
+          <button type="submit" (click)="editar_planta()" class="editar" [disabled]="formPathPlanta.invalid">Editar</button>
         </form>
       </article>
     </article>
+    <div *ngIf="RegistroExito">
+      <app-shared-alert-plant (registrarClick)="onRegistroExito()" [tipoalerta]="'registroexitoso'">
+      </app-shared-alert-plant>
+   </div> 
+   <div *ngIf="RegistroError">
+    <app-shared-alert-plant (errorClick)="onRegistroError()" [tipoalerta]="'error'">
+    </app-shared-alert-plant>
+  </div>
+   <div *ngIf="Request">
+      <app-shared-alert-plant 
+        (RequestSi)="onAlertSi()" 
+        (RequestNo)="onAlertNo()" 
+        [tipoalerta]="'requestAlert'">
+      </app-shared-alert-plant>
+   </div>
   </section>
+</body>
   

@@ -4,7 +4,7 @@ import { environment } from "src/environments/environment";
 import { Observable  } from "rxjs";
 import { FormGroup } from "@angular/forms";
 
-import { plant } from '../component/plantas/model/interface.plant';
+import { plant, CantidadStock } from '../component/plantas/model/interface.plant';
 
 
 @Injectable({
@@ -29,6 +29,9 @@ export class ServicePlantComponent{
   }
   updateplanta(id:number, data:any):Observable<plant>{
     return this.http.patch<plant>(`${this.url}/planta/${id}`,data)
+  }
+  updateCantidad(id:number, data:any):Observable<CantidadStock>{
+    return this.http.put<CantidadStock>(`${this.url}/planta/updateCantidad/${id}`,data)
   }
 
 }
